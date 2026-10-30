@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <main class="shell">
+      <header class="brand-block">
+        <p class="eyebrow">Async · RAG · LangGraph</p>
+        <h1 class="brand">AI Researcher</h1>
+        <p class="lede">
+          Ask a question. The API queues the job immediately, then the worker
+          retrieves internal knowledge, calls the MCP search tool, and writes a
+          structured report.
+        </p>
+      </header>
+
+      <section class="composer" aria-label="Research query">
+        <label class="field-label" for="query">Research question</label>
+        <textarea
+          id="query"
+          name="query"
+          rows="4"
+          placeholder="e.g. What are Samir’s hobbies, and how does RAG support research?"
+        ></textarea>
+        <div class="composer-actions">
+          <button id="submit-btn" type="button" class="primary">
+            Start research
+          </button>
+          <p id="status-line" class="status-line" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section id="report" class="report hidden" aria-live="polite">
+        <div class="report-header">
+          <h2>Research report</h2>
+          <span id="confidence" class="pill"></span>
+          <span id="cache-flag" class="pill muted hidden">cached</span>
+          <span id="web-flag" class="pill muted hidden">web search</span>
+          <span id="kb-flag" class="pill muted hidden">knowledge base</span>
+        </div>
+        <p id="report-query" class="report-query"></p>
+        <p id="summary" class="summary"></p>
+
+        <div class="grid">
+          <article class="panel">
+            <h3>Key findings</h3>
+            <ul id="findings"></ul>
+          </article>
+          <article class="panel">
+            <h3>Internal context</h3>
+            <div id="internal" class="stack"></div>
+          </article>
+          <article class="panel">
+            <h3>External MCP results</h3>
+            <div id="external" class="stack"></div>
+          </article>
+        </div>
+
+        <p id="task-meta" class="meta"></p>
+      </section>
+
+      <section id="error-box" class="error-box hidden" role="alert"></section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
